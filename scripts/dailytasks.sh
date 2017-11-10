@@ -29,7 +29,7 @@ sleep 1
 LAST_YEAR=$(($(date +%Y) - 1))
 THIS_MONTH=$(date +%m)
 echo "Deleting ${LAST_YEAR}-${THIS_MONTH} logfiles..."
-rm -vrf ${HOME}project_logs/${LAST_YEAR}-${THIS_MONTH}
+rm -vrf ${HOME}/project_logs/${LAST_YEAR}-${THIS_MONTH}
 
 sleep 1
 # SEND EMAIL NOTIFICATIONS
