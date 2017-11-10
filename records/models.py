@@ -17,7 +17,7 @@ class Professional(models.Model):
     is_coordinator = models.BooleanField(default=False)
 
     def get_full_name(self):
-        return (self.user.first_name + " " + self.user.last_name).encode("utf-8")
+        return (self.user.first_name + " " + self.user.last_name)
 
     def __str__(self):
         response = self.user.last_name + ", " + self.user.first_name + ' (DNI:' + str(self.dni) + ')'
@@ -30,11 +30,11 @@ class Secretary(models.Model):
     phone_number = models.CharField(max_length=15)
     
     def get_full_name(self):
-        return (self.user.first_name + " " + self.user.last_name).encode("utf-8")
+        return (self.user.first_name + " " + self.user.last_name)
 
     def __str__(self):
         return (self.user.last_name + ", " + self.user.first_name +
-                   ' (DNI:' + str(self.dni) + ')').encode("utf-8")
+                   ' (DNI:' + str(self.dni) + ')')
 
 
 class Patient(models.Model):
@@ -50,14 +50,14 @@ class Patient(models.Model):
     psyp_month_hours = models.IntegerField(default=0, validators=[MaxValueValidator(200), MinValueValidator(0)])
 
     def get_full_name(self):
-        return (self.first_name + " " + self.last_name).encode("utf-8")
+        return (self.first_name + " " + self.last_name)
 
     def get_age(self):
         return ((timezone.now().date()) - self.birthdate)
 
     def __str__(self):
         return (self.last_name + ", " + self.first_name +
-                ' (DNI:' + str(self.dni) + ')').encode("utf-8")
+                ' (DNI:' + str(self.dni) + ')')
 
 
 class Case(models.Model):
