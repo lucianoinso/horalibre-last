@@ -88,7 +88,7 @@ class Case(models.Model):
         prof_name = (prof_name)
         patient_name = (patient_name)
         coord_name = (coord_name)
-        response = ("Paciente: \"" + patient_name + "\" ~ Profesional: \"" + prof_name + "\" ~ Coordinador: \"" + coord_name + "\"").encode('utf-8')
+        response = ("Paciente: \"" + patient_name + "\" ~ Profesional: \"" + prof_name + "\" ~ Coordinador: \"" + coord_name + "\"")
         return response
     
     def log_str(self):

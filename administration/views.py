@@ -44,7 +44,7 @@ def create_logfile(log):
 
     log += "\n"
     logfile_obj = open(log_dir + "/" + logfile_name, "a")
-    log = log.encode('utf-8')
+    log = log
     logfile_obj.write(log)
     logfile_obj.close()
 
