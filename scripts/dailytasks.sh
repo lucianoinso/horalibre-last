@@ -3,15 +3,13 @@
 # DATABASE SCRIPTS
 
 CURRENT_DAY=$(date "+%d")
-echo $CURRENT_DAY
 
-
-if [ $(($CURRENT_DATE % 7)) == 0 ]
+if [ $(($CURRENT_DAY % 7)) == 0 ]
 then
     BACKUP_DB_PATH="${HOME}/db_backups"
 
     # DELETE OLDEST FILE IN DATABASE DIRECTORY IF THERE ARE MORE THAN 3 DB'S
-    FILECOUNT=$(($(ls -afq ~/| wc -l) - 2))
+    FILECOUNT=$(($(ls -afq ${BACKUP_DB_PATH}| wc -l) - 2))
     echo ${FILECOUNT}
 
     if [ $FILECOUNT -ge 4 ]
