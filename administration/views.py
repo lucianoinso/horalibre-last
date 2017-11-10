@@ -68,7 +68,7 @@ def add_log(username, event, model, model_key):
               }
 
     timestamp = (datetime.now().strftime('[%d/%m/%y - %H:%M:%S]'))
-    timestamp = timestamp.decode('utf-8')
+    timestamp = timestamp
 
     log = (timestamp + " \'" + (username) + "\' " + (events[event]) + " " +
            "\"" + model_key + "\" " + "[" + (models[model]) + "]")
@@ -748,7 +748,7 @@ def create_patient(request):
                         psyp_month_hours=psyp_month_hours)
                     new_patient.save()
                     add_log(request.user.username, "add", "patient",
-                            new_patient.__str__().decode("utf-8"))
+                            new_patient.__str__())
                     return HttpResponseRedirect('/administration/')
                 else:
                     # We prepopulate the form with the previous values
@@ -834,7 +834,7 @@ def modify_patient(request, patient_id):
 
                         patient.save()
                         add_log(request.user.username, "mod", "patient",
-                                patient.__str__().decode("utf-8"))
+                                patient.__str__())
                     else:
                         error_message = "El DNI del paciente ya existe, elija otro"
                         return render(request,
@@ -888,7 +888,7 @@ def delete_patient(request):
             if form.is_valid():
                 patient = form.cleaned_data['patient']
                 add_log(request.user.username, "del", "patient",
-                        patient.__str__().decode("utf-8"))
+                        patient.__str__())
                 patient.delete()
             return HttpResponseRedirect('/administration/')
 

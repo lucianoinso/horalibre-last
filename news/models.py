@@ -37,7 +37,7 @@ class Article(models.Model):
             title = title[:30] + "[...]"
         
         creation_date = (self.creation_date.strftime('%d/%m/%y'))
-        creation_date = (creation_date).decode('utf-8')
+        creation_date = (creation_date)
 
         response = (creation_date + " - Titulo:" + (title) + " - Autor:" + 
                    (author) + " " + (draft))
@@ -53,7 +53,7 @@ class Article(models.Model):
             author = self.author.get_full_name()
 
         creation_date = self.creation_date.strftime('%d/%m/%y')
-        creation_date = (creation_date).decode('utf-8')
+        creation_date = (creation_date)
 
         if (len(title) > 45):
             title = title[:45] + "[...]"

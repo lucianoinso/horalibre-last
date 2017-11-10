@@ -85,9 +85,9 @@ class Case(models.Model):
             coord_name = self.coordinator.get_full_name()
 
 
-        prof_name = (prof_name).decode('utf-8')
-        patient_name = (patient_name).decode('utf-8')
-        coord_name = (coord_name).decode('utf-8')
+        prof_name = (prof_name)
+        patient_name = (patient_name)
+        coord_name = (coord_name)
         response = ("Paciente: \"" + patient_name + "\" ~ Profesional: \"" + prof_name + "\" ~ Coordinador: \"" + coord_name + "\"").encode('utf-8')
         return response
     
@@ -107,9 +107,9 @@ class Case(models.Model):
         else:
             coord_name = self.coordinator.get_full_name()
         
-        prof_name = (prof_name).decode('utf-8')
-        patient_name = (patient_name).decode('utf-8')
-        coord_name = (coord_name).decode('utf-8')
+        prof_name = (prof_name)
+        patient_name = (patient_name)
+        coord_name = (coord_name)
 
         response = patient_name + " - " + prof_name + " - " + coord_name + " (id: " + str(self.id) + ")"
         
@@ -139,7 +139,7 @@ class Record(models.Model):
         else:
             return (author + " - " + 
                     self.case.patient.__str__() + " - Fecha de la sesion: " +
-                    str(self.session_datetime.date()).decode("utf-8"))
+                    str(self.session_datetime.date()))
 
 
 class Notification(models.Model):
