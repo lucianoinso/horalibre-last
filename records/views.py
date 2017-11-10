@@ -53,7 +53,7 @@ def patient_list(request):
             .values_list('patient', flat=True).distinct()
 
             case_inter_list = Case.objects.filter(id__in=cases).order_by('patient__last_name')
-            case_list = case_inter_list.values_list('patient__id').distinct()
+            case_list = case_inter_list.distinct()
 
         except Exception as e:
             return redirect_home()
