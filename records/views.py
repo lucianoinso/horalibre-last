@@ -48,8 +48,11 @@ def patient_list(request):
         try:
             prof = Professional.objects.get(user=request.user)
             # TODO : fix this distinct
+#            cases = Case.objects.all().filter(Q(professional=prof) | Q(coordinator=prof))\
+#                                .distinct('patient').values_list('id', flat=True)
             cases = Case.objects.all().filter(Q(professional=prof) | Q(coordinator=prof))\
-                                .distinct('patient').values_list('id', flat=True)
+            .values_list('id', flat=True).distinct()
+
             case_list = Case.objects.filter(id__in=cases).order_by('patient__last_name')
 
         except Exception as e:
