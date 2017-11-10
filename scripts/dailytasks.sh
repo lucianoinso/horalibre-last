@@ -9,7 +9,7 @@ rm -v "${BACKUP_DB_PATH}/$(ls -t ${BACKUP_DB_PATH} | tail -1)"
 
 sleep 1
 
-# CREATE DATABASE BACKUP
+# CREATE NEW DATABASE BACKUP
 
 CURRENT_DATE=$(date +%d-%m-%y)
 FULL_PATH="${BACKUP_DB_PATH}/${CURRENT_DATE}.sql"
@@ -23,3 +23,16 @@ mysqldump -u fundacionhoralib -h fundacionhoralibre.mysql.pythonanywhere-service
 'fundacionhoralib$db_11479' > ${FULL_PATH}
 
 sleep 1
+
+# DELETE LASTYEAR SAME MONTH LOG
+
+LAST_YEAR=$(($(date +%Y) - 1))
+THIS_MONTH=$(date +%m)
+echo "Deleting ${LAST_YEAR}-${THIS_MONTH} logfiles..."
+rm -vrf ${HOME}project_logs/${LAST_YEAR}-${THIS_MONTH}
+
+sleep 1
+# SEND EMAIL NOTIFICATIONS
+SCRIPT_PATH=${HOME}/horalibre/manage.py
+python ${SCRIPT_PATH} send_notifications
+echo "Send notifications script runned"
