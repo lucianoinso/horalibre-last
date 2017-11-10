@@ -28,8 +28,8 @@ class Command(BaseCommand):
                               settings.EMAIL_HOST_USER, [coord], fail_silently=False,
                               html_message=html_message)
                 notifs.delete()
-                print "Notifications sent"
+                print("Notifications sent")
             else:
-                print "There are no notifications to send"
+                print("There are no notifications to send")
         except Exception as e:
             print(e)
