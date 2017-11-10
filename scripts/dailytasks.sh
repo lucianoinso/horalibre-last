@@ -2,9 +2,10 @@
 
 # DATABASE SCRIPTS
 
+ROUTINE_DAY=10
 CURRENT_DAY=$(date "+%d")
 
-if [ $(($CURRENT_DAY % 7)) == 0 ]
+if [ $((${CURRENT_DAY} % ${ROUTINE_DAY})) == 0 ]
 then
     BACKUP_DB_PATH="${HOME}/db_backups"
 
@@ -16,8 +17,6 @@ then
     then
         echo "Deleting oldest backup database..."
         rm -v "${BACKUP_DB_PATH}/$(ls -t ${BACKUP_DB_PATH} | tail -1)"
-
-        sleep 1
     fi
 
     # CREATE NEW DATABASE BACKUP
@@ -32,15 +31,16 @@ then
 
     mysqldump -u fundacionhoralib -h fundacionhoralibre.mysql.pythonanywhere-services.com \
     'fundacionhoralib$db_11479' > ${FULL_PATH}
-
-    sleep 1
 fi
-# DELETE LASTYEAR SAME MONTH LOG
 
-LAST_YEAR=$(($(date +%Y) - 1))
-THIS_MONTH=$(date +%m)
-echo "Deleting ${LAST_YEAR}-${THIS_MONTH} logfiles..."
-rm -vrf ${HOME}/project_logs/${LAST_YEAR}-${THIS_MONTH}
+# DELETE LASTYEAR SAME MONTH LOG
+if [ $((${CURRENT_DAY} -eq ${ROUTINE_DAY})) ]
+then
+    LAST_YEAR=$(($(date +%Y) - 1))
+    THIS_MONTH=$(date +%m)
+    echo "Deleting ${LAST_YEAR}-${THIS_MONTH} logfiles..."
+    rm -vrf ${HOME}/project_logs/${LAST_YEAR}-${THIS_MONTH}
+fi
 
 sleep 1
 # SEND EMAIL NOTIFICATIONS
