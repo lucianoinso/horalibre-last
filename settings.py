@@ -167,7 +167,7 @@ STATICFILES_DIRS = [
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
-LOGS_DIR = "~/project_logs"
+LOGS_DIR = "project_logs"
 
 # EMAIL DATA
 EMAIL_USE_TLS = True
