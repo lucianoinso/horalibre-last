@@ -25,7 +25,7 @@ PYTHONIOENCODING="UTF-8"
 #SECRET_KEY = '2-yp#7$u8kaq2)m-82b6tkedsetr0og@%d+xv)s$+m0ufmd%5o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 from socket import gethostname
 

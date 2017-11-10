@@ -20,7 +20,7 @@ class Professional(models.Model):
         return (self.user.first_name + " " + self.user.last_name).encode("utf-8")
 
     def __str__(self):
-        response = (self.user.last_name + ", " + self.user.first_name + ' (DNI:' + str(self.dni) + ')').encode("utf-8")
+        response = self.user.last_name + ", " + self.user.first_name + ' (DNI:' + str(self.dni) + ')'
         return response
 
 
