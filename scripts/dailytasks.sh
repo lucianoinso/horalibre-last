@@ -2,7 +2,7 @@
 
 # DATABASE SCRIPTS
 
-ROUTINE_DAY=10
+ROUTINE_DAY=7
 CURRENT_DAY=$(date "+%d")
 
 if [ $((${CURRENT_DAY} % ${ROUTINE_DAY})) == 0 ]
@@ -11,7 +11,7 @@ then
 
     # DELETE OLDEST FILE IN DATABASE DIRECTORY IF THERE ARE MORE THAN 3 DB'S
     FILECOUNT=$(($(ls -afq ${BACKUP_DB_PATH}| wc -l) - 2))
-    echo ${FILECOUNT}
+    echo "Number of backups: ${FILECOUNT}"
 
     if [ $FILECOUNT -ge 4 ]
     then
@@ -34,7 +34,7 @@ then
 fi
 
 # DELETE LASTYEAR SAME MONTH LOG
-if [ $((${CURRENT_DAY} -eq ${ROUTINE_DAY})) ]
+if [ ${CURRENT_DAY} -eq ${ROUTINE_DAY} ]
 then
     LAST_YEAR=$(($(date +%Y) - 1))
     THIS_MONTH=$(date +%m)
