@@ -6,11 +6,11 @@
   <div class="section-title"><h1>Pacientes</h1></div>
     <div class="patient-entries">
 
-      {% if case_list %}
-        {% for case in case_list %}
+      {% if patient_list %}
+        {% for patient in patient_list %}
           <div class="patient-entry">
             <div class="patient-data" style="font-size:18px;">
-              <a href="{% url 'records:select_records' case.patient.id %}"> {{ case.patient.get_full_name }} (DNI: {{ case.patient.dni }})</a>
+              <a href="{% url 'records:select_records' patient.id %}"> {{ patient.get_full_name }} (DNI: {{ patient.dni }})</a>
             </div>
           </div>
         {% endfor %}

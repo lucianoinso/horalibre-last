@@ -40,27 +40,19 @@ def select_records(request, patient_id):
     else:
         return HttpResponseRedirect("/login")
 
-        # EXCEPTION ObjectDoesNotExist Profesional is in a case with that patient
-
 
 def patient_list(request):
     if request.user.is_authenticated:
         try:
             prof = Professional.objects.get(user=request.user)
-#            cases = Case.objects.all().filter(Q(professional=prof) | Q(coordinator=prof))\
-#                                .distinct('patient').values_list('id', flat=True)
-
-# no anda bien
-            cases = Case.objects.all().filter(Q(professional=prof) | Q(coordinator=prof))\
-            .values_list('patient', flat=True).distinct()
-
-            case_list = Case.objects.filter(id__in=cases).order_by('patient__last_name')
+            patients_ids = Case.objects.all().filter(Q(professional=prof) | Q(coordinator=prof)).values("patient__id")
+            patient_list = Patient.objects.filter(id__in=patients_ids).order_by('last_name')
 
         except Exception as e:
             return redirect_home()
 
         return render(request, 'records/patient_list.html', {
-            'case_list': case_list,
+            'patient_list': patient_list,
             })
     else:
         return HttpResponseRedirect("/login")
