@@ -48,7 +48,8 @@ input[type="checkbox"]{
 
 
 .article-author .article-author-name{
-
+    font-style: normal;
+    font-weight: 500;
 }
 
 .article-last-modified{
@@ -58,6 +59,11 @@ input[type="checkbox"]{
 .entry-text{
     font-size: 14px;
     word-wrap: break-word;
+}
+
+.feed-entries .article-entry span.entry-date {
+    float: right;
+    color: #ff7b8d;
 }
 
 .modify-template-buttons input{
