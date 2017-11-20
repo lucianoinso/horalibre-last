@@ -33,7 +33,7 @@ ALLOWED_HOSTS = [
     'fundacionhoralibre.pythonanywhere.com'
 ]
 
-APP_DNS = os.environ.get('OPENSHIFT_APP_DNS')
+APP_DNS = 'fundacionhoralibre.pythonanywhere.com'
 
 DJ_PROJECT_DIR = os.path.dirname(__file__)
 BASE_DIR = os.path.dirname(DJ_PROJECT_DIR)

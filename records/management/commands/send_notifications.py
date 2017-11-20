@@ -19,7 +19,7 @@ class Command(BaseCommand):
 
                 for notif in notifs:
                     print("LCDTM")
-                    notif_content = ("<li style=\"margin-bottom:5px;\">" + str(notif.record.author.get_full_name()) + " ha agregado un registro nuevo para el/la paciente " + str(notif.record.patient.get_full_name()) + " " + "<a href=\"" + "http://" + settings.APP_DNS + "/home/records/patient/"+ str(notif.record.patient.id) + "/record/" + str(notif.record.id) + "/" + "\">" + "(" + (str(notif.record.session_datetime)).strftime('%d/%m/%Y') + ")</a>.</li>")
+                    notif_content = ("<li style=\"margin-bottom:5px;\">" + str(notif.record.author.get_full_name()) + " ha agregado un registro nuevo para el/la paciente " + str(notif.record.patient.get_full_name()) + " " + "<a href=\"" + "http://" + settings.APP_DNS + "/home/records/patient/"+ str(notif.record.patient.id) + "/record/" + str(notif.record.id) + "/" + "\">" + "(" + str((notif.record.session_datetime).strftime('%d/%m/%Y')) + ")</a>.</li>")
                     print("LCDTM2")
                     coords_content[notif.record.case.coordinator.user.email] += notif_content
 
