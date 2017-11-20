@@ -18,11 +18,14 @@ class Command(BaseCommand):
                 coords_content = dict.fromkeys(coords, "")
 
                 for notif in notifs:
-                    notif_content = ("<li style=\"margin-bottom:5px;\">" + (notif.record.author.get_full_name()) + " ha agregado un registro nuevo para el/la paciente " + (notif.record.patient).get_full_name() + " " + "<a href=\"" + "http://" + settings.APP_DNS + "/home/records/patient/"+ str(notif.record.patient.id) + "/record/" + str(notif.record.id) + "/" + "\">" + "(" + (notif.record.session_datetime).strftime('%d/%m/%Y') + ")</a>.</li>")
+                    print("LCDTM")
+                    notif_content = ("<li style=\"margin-bottom:5px;\">" + str(notif.record.author.get_full_name()) + " ha agregado un registro nuevo para el/la paciente " + str(notif.record.patient.get_full_name()) + " " + "<a href=\"" + "http://" + settings.APP_DNS + "/home/records/patient/"+ str(notif.record.patient.id) + "/record/" + str(notif.record.id) + "/" + "\">" + "(" + (str(notif.record.session_datetime)).strftime('%d/%m/%Y') + ")</a>.</li>")
+                    print("LCDTM2")
                     coords_content[notif.record.case.coordinator.user.email] += notif_content
 
+                print("LCDTM3")
                 for coord in coords_content:
-                    html_message = u"<!DOCTYPE HTML><html><body><h3>Estimado/a, le acercamos las últimas novedades de registros vinculadas a sus casos:</h3><ul style=\"padding-left:10px;\">" + coords_content[coord] + u"</ul><p style=\"padding-top:10px\">Atte.<br>El equipo de Fundación Hora Libre</p></body></html>"
+                    html_message = "<!DOCTYPE HTML><html><body><h3>Estimado/a, le acercamos las últimas novedades de registros vinculadas a sus casos:</h3><ul style=\"padding-left:10px;\">" + coords_content[coord] + u"</ul><p style=\"padding-top:10px\">Atte.<br>El equipo de Fundación Hora Libre</p></body></html>"
                     # send_mail('SUBJECT','CONTENT','from@email.com',['dest1@hotmail.com', 'dest2@hotmail.com'],fail_silently=False)
                     send_mail('Novedades de registros', "",
                               settings.EMAIL_HOST_USER, [coord], fail_silently=False,
