@@ -120,11 +120,11 @@ class Record(models.Model):
     creation_datetime = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
     session_datetime = models.DateTimeField()
-    session_resume = models.CharField(max_length=5000)
+    session_resume = models.CharField(max_length=5200)
     session_duration = models.TimeField()
     author = models.ForeignKey(Professional, related_name='record_author', 
                    on_delete=models.SET_NULL, null=True)
-    patient = models.ForeignKey(Patient, on_delete=models.SET_NULL,
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE,
                                 null=True, related_name='record_patient')
     case = models.ForeignKey(Case, on_delete=models.SET_NULL, null=True, blank=True)
 

@@ -167,7 +167,7 @@ class PatientForm(ModelForm):
             "last_name": "Apellido",
             "birthdate": "Fecha de nacimiento",
             "health_insurance": "Obra Social",
-            'dni': "D.N.I",
+            'dni': "Número de documento",
             "phone_number": "Numero de teléfono",
             "ta_month_hours": "Horas mensuales de A.T",
             "si_month_hours": "Horas mensuales de Integración Escolar",

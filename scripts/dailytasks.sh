@@ -13,7 +13,7 @@ then
     FILECOUNT=$(($(ls -afq ${BACKUP_DB_PATH}| wc -l) - 2))
     echo "Number of backups: ${FILECOUNT}"
 
-    if [ $FILECOUNT -ge 4 ]
+    if [ $FILECOUNT -ge 3 ]
     then
         echo "Deleting oldest backup database..."
         rm -v "${BACKUP_DB_PATH}/$(ls -t ${BACKUP_DB_PATH} | tail -1)"
